@@ -1,0 +1,261 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Chicken Cage</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type='module' src='https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js'></script>
+    <script nomodule='' src='https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mdtimepicker.css">
+    <script src="https://cdn.jsdelivr.net/npm/particle-api-js@8/dist/particle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.1/dist/mdtimepicker.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@2.0.1/dist/mdtimepicker.css">
+    <script src="assets/js/mdtimepicker.js"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+</head>
+
+<body>
+    <div class="container" id="workContainer">
+        <div class="components" id="mainDiv">
+            <div class="select__input">
+                <select class="select" id="deviceSelect"></select>
+            </div>
+
+            <div class="lottiePlayer">
+                <dotlottie-player 
+                    src="https://lottie.host/9854aa2c-d5ef-4be9-a397-9317cffda40c/L7wFjBRxSH.lottie"
+                    background="transparent" speed="1" loop autoplay>
+                </dotlottie-player>
+            </div>
+            
+            <div class="presets" id="presets">
+                <h3>Select Effect</h3>
+                <div class="effect__select__input">
+                    <select class="select" id="effectSelect" onchange="effectSelect(this.value)">
+                        <option value="Static">Static</option>
+                        <option value="Blink">Blink</option>
+                        <option value="Breath">Breath</option>
+                        <option value="Color Wipe">Color Wipe</option>
+                        <option value="Color Wipe Inverse">Color Wipe Inverse</option>
+                        <option value="Color Wipe Reverse">Color Wipe Reverse</option>
+                        <option value="Color Wipe Reverse Inverse">Color Wipe Reverse Inverse</option>
+                        <option value="Color Wipe Random">Color Wipe Random</option>
+                        <option value="Random Color">Random Color</option>
+                        <option value="Single Dynamic">Single Dynamic</option>
+                        <option value="Multi Dynamic">Multi Dynamic</option>
+                        <option value="Rainbow">Rainbow</option>
+                        <option value="Rainbow Cycle">Rainbow Cycle</option>
+                        <option value="Scan">Scan</option>
+                        <option value="Dual Scan">Dual Scan</option>
+                        <option value="Fade">Fade</option>
+                        <option value="Theater Chase">Theater Chase</option>
+                        <option value="Theater Chase Rainbow">Theater Chase Rainbow</option>
+                        <option value="Running Lights">Running Lights</option>
+                        <option value="Twinkle">Twinkle</option>
+                        <option value="Twinkle Random">Twinkle Random</option>
+                        <option value="Twinkle Fade">Twinkle Fade</option>
+                        <option value="Twinkle Fade Random">Twinkle Fade Random</option>
+                        <option value="Sparkle">Sparkle</option>
+                        <option value="Flash Sparkle">Flash Sparkle</option>
+                        <option value="Hyper Sparkle">Hyper Sparkle</option>
+                        <option value="Strobe">Strobe</option>
+                        <option value="Strobe Rainbow">Strobe Rainbow</option>
+                        <option value="Multi Strobe">Multi Strobe</option>
+                        <option value="Blink Rainbow">Blink Rainbow</option>
+                        <option value="Chase White">Chase White</option>
+                        <option value="Chase Color">Chase Color</option>
+                        <option value="Chase Random">Chase Random</option>
+                        <option value="Chase Rainbow">Chase Rainbow</option>
+                        <option value="Chase Flash">Chase Flash</option>
+                        <option value="Chase Flash Random">Chase Flash Random</option>
+                        <option value="Chase Rainbow White">Chase Rainbow White</option>
+                        <option value="Chase Blackout">Chase Blackout</option>
+                        <option value="Chase Blackout Rainbow">Chase Blackout Rainbow</option>
+                        <option value="Color Sweep Random">Color Sweep Random</option>
+                        <option value="Running Color">Running Color</option>
+                        <option value="Running Red Blue">Running Red Blue</option>
+                        <option value="Running Random">Running Random</option>
+                        <option value="Larson Scanner">Larson Scanner</option>
+                        <option value="Comet">Comet</option>
+                        <option value="Fireworks">Fireworks</option>
+                        <option value="Fireworks Random">Fireworks Random</option>
+                        <option value="Merry Christmas">Merry Christmas</option>
+                        <option value="Fire Flicker">Fire Flicker</option>
+                        <option value="Fire Flicker (soft)">Fire Flicker (soft)</option>
+                        <option value="Fire Flicker (intense)">Fire Flicker (intense)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="messages">
+                <input type="text" class="form__input" placeholder="Merry X'mas!" id="greetingText"></input>
+                <button class="btn btn__primary" id="sendGreeting">Send Greeting</button>
+            </div>
+
+            <div class="icon__account__control">
+                <div class="icon__account" id="logoutButton">
+                    <ion-icon name="log-out"></ion-icon>
+                </div>
+            </div>
+            <div class="icon__menu__control">
+                <div class="icon__menu" id="menuButton">
+                    <ion-icon name="menu"></ion-icon>
+                </div>
+            </div>
+
+            <div class="icon__weather__control">
+                <div class="icon__weather" id="weatherButton" onclick="weatherMode()">
+                    <ion-icon name="snow"></ion-icon>
+                </div>
+            </div>
+
+            <div class="icon__motion__control">
+                <div class="icon__motion" id="motionButton" onclick="motionSense()">
+                    <ion-icon name="walk"></ion-icon>
+                </div>
+            </div>
+            
+            <div class="icon__preset__control">
+                <div class="icon__preset" id="presetButton">
+                    <ion-icon name="heart"></ion-icon>
+                </div>
+            </div>
+            
+            <div class="icon__message__control">
+                <div class="icon__message" id="messageButton">
+                    <ion-icon name="chatbubbles"></ion-icon>
+                </div>
+            </div>
+
+            <div class="icon__music__control">
+                <div class="icon__music" id="musicButton" onclick="musicReactive()">
+                    <ion-icon name="musical-notes"></ion-icon>
+                </div>
+            </div>
+
+        </div>
+        <!--<div class="components2" id="components2">
+            <div class="icon__control">
+                <div class="icon__account" onclick="toggleDiv()">
+                    <ion-icon name="home"></ion-icon>
+                </div>
+            </div>   
+            <div id="wrapper" class="wrapper">
+            </div>
+            <div class="icon" onclick="addStore()" id="timepicker">
+                <div class="icon__add">
+                    <ion-icon name="add"></ion-icon>
+                </div>
+            </div>
+        </div>
+        <div class="components2" id="Presets">
+            <div class="icon__control">
+                <div class="icon__account" onclick="togglePresetsDiv()">
+                    <ion-icon name="home"></ion-icon>
+                </div>
+            </div>   
+            <div id="wrapper" class="wrapper">
+                <div class="select__input">
+                    <select class="select" id="effectSelect" onchange="ledControl(this.value)">
+                        <option value="Static">Static</option>
+                        <option value="Blink">Blink</option>
+                        <option value="Breath">Breath</option>
+                        <option value="Color Wipe">Color Wipe</option>
+                        <option value="Color Wipe Inverse">Color Wipe Inverse</option>
+                        <option value="Color Wipe Reverse">Color Wipe Reverse</option>
+                        <option value="Color Wipe Reverse Inverse">Color Wipe Reverse Inverse</option>
+                        <option value="Color Wipe Random">Color Wipe Random</option>
+                        <option value="Random Color">Random Color</option>
+                        <option value="Single Dynamic">Single Dynamic</option>
+                        <option value="Multi Dynamic">Multi Dynamic</option>
+                        <option value="Rainbow">Rainbow</option>
+                        <option value="Rainbow Cycle">Rainbow Cycle</option>
+                        <option value="Scan">Scan</option>
+                        <option value="Dual Scan">Dual Scan</option>
+                        <option value="Fade">Fade</option>
+                        <option value="Theater Chase">Theater Chase</option>
+                        <option value="Theater Chase Rainbow">Theater Chase Rainbow</option>
+                        <option value="Running Lights">Running Lights</option>
+                        <option value="Twinkle">Twinkle</option>
+                        <option value="Twinkle Random">Twinkle Random</option>
+                        <option value="Twinkle Fade">Twinkle Fade</option>
+                        <option value="Twinkle Fade Random">Twinkle Fade Random</option>
+                        <option value="Sparkle">Sparkle</option>
+                        <option value="Flash Sparkle">Flash Sparkle</option>
+                        <option value="Hyper Sparkle">Hyper Sparkle</option>
+                        <option value="Strobe">Strobe</option>
+                        <option value="Strobe Rainbow">Strobe Rainbow</option>
+                        <option value="Multi Strobe">Multi Strobe</option>
+                        <option value="Blink Rainbow">Blink Rainbow</option>
+                        <option value="Chase White">Chase White</option>
+                        <option value="Chase Color">Chase Color</option>
+                        <option value="Chase Random">Chase Random</option>
+                        <option value="Chase Rainbow">Chase Rainbow</option>
+                        <option value="Chase Flash">Chase Flash</option>
+                        <option value="Chase Flash Random">Chase Flash Random</option>
+                        <option value="Chase Rainbow White">Chase Rainbow White</option>
+                        <option value="Chase Blackout">Chase Blackout</option>
+                        <option value="Chase Blackout Rainbow">Chase Blackout Rainbow</option>
+                        <option value="Color Sweep Random">Color Sweep Random</option>
+                        <option value="Running Color">Running Color</option>
+                        <option value="Running Red Blue">Running Red Blue</option>
+                        <option value="Running Random">Running Random</option>
+                        <option value="Larson Scanner">Larson Scanner</option>
+                        <option value="Comet">Comet</option>
+                        <option value="Fireworks">Fireworks</option>
+                        <option value="Fireworks Random">Fireworks Random</option>
+                        <option value="Merry Christmas">Merry Christmas</option>
+                        <option value="Fire Flicker">Fire Flicker</option>
+                        <option value="Fire Flicker (soft)">Fire Flicker (soft)</option>
+                        <option value="Fire Flicker (intense)">Fire Flicker (intense)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="authContainer">
+        <div id="mainDiv" style="display: none;">
+            <h3>Control an LED!</h3>
+            <form>
+                <p>Device: <select id="deviceSelect"></select></p>
+                <p><button id="ledOnButton">LED On</button>&nbsp;<button id="ledOffButton">LED Off</button></p>
+                <p>&nbsp;</p>
+                <p><span id="statusSpan"></span></p>
+                <p>&nbsp;</p>
+                <p>Logged in as <span id="userSpan"></span> <button id="logoutButton">Log out</button></p>
+            </form>
+        </div>-->
+
+        <div id="loginDiv" class="components3">
+            <h3>Login to Particle</h3>
+            
+            <form id="loginForm" class="form">
+                <input type="text" class="form__input" placeholder="Username or Email" id="userInput"><br>
+                <input type="password" class="form__input" placeholder="Password" id="passwordInput"><br>
+                <input type="submit" value="Login" class="btn btn__primary">
+            </form>
+            <div id="loginFailedDiv" style="display: none;" class="failed">
+                <p>Login failed, please try again.</p>
+            </div>
+        </div>
+
+        <div id="otpDiv" class="components3" style="display: none;">
+            <h3>Login to Particle</h3>
+            <form id="otpForm" class="form">
+                <input type="text" id="otpInput" placeholder="OTP From Authenticator App" class="form__input">
+                <input type="submit" value="Login" class="btn btn__primary">
+            </form>
+        </div>
+    </div>
+
+    <script id="rendered-js" src="assets/js/script.js"></script>
+    <script src="assets/js/mdtimepicker.js"></script>
+</body>
+
+</html>
